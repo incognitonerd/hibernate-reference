@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.sandbox.hqlsqlbasics.RunAppHqlSqlBasics</start-class>
 	</properties>
 
 	<dependencies>
