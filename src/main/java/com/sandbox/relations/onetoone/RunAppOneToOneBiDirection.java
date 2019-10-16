@@ -57,8 +57,7 @@ public class RunAppOneToOneBiDirection {
 		Map.Entry<SessionFactory,Session> entry = getSession().entrySet().iterator().next();
 		Map<Instructor, InstructorDetail> map = new HashMap<Instructor, InstructorDetail>();
 		try {
-
-			int instructorId = 1;
+			int instructorId = 2;
 			entry.getValue().beginTransaction();
 			Instructor instructor = entry.getValue().get(Instructor.class, instructorId);
 			if (instructor != null) {

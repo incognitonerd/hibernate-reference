@@ -42,7 +42,7 @@ public class RunAppManyToManyBiDirection {
 
 		//addStudentToCourse();
 		//deleteCourse(3);
-		deleteStudent(15);
+		//deleteStudent(15);
 	}
 
 	public static void saveStudentAndCourse() {

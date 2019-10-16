@@ -3,7 +3,9 @@ package com.sandbox.relations.onetoone;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.sandbox.models.onetomanyunidirectional.Course;
+import com.sandbox.models.onetomanyunidirectional.Review;
 import com.sandbox.models.onetooneunidirectional.Instructor;
 import com.sandbox.models.onetooneunidirectional.InstructorDetail;
 import com.sandbox.utils.Constants;
@@ -29,22 +33,23 @@ public class RunAppOneToOneUniDirection {
 
 	public static void main(String[] args) {
 		// checkDBConnection();
-
-		// for(int i = 0; i < 3; i++)
-		// saveInstructorAndInstuctorDetail();
+		//saveInstructorAndInstuctorDetail();
+		
+		Map.Entry<Instructor,InstructorDetail> entry = getInstructorAndInstructorDetail().entrySet().iterator().next();
+		if(entry.getKey() != null &&  entry.getValue() != null)
+			System.out.println(entry.getKey().getfName() + "\tDetails - " + entry.getValue().toString());
 		//deleteInstructorDetailsNotAllowed();
-		deleteInstructor();
+		//deleteInstructor();
 	}
 
 	public static void saveInstructorAndInstuctorDetail() {
 		Map.Entry<SessionFactory, Session> entry = getSession().entrySet().iterator().next();
 
 		try {
-			Instructor instructor = new Instructor("rugrats", "recess", "cow@duck");
-			InstructorDetail instructorDetail = new InstructorDetail("cartoons", "saturday");
+			Instructor instructor = new Instructor("waves", "braids", "fades@dreads");
+			InstructorDetail instructorDetail = new InstructorDetail("barber", "shop");
 			instructor.setInstructorDetail(instructorDetail);
 			entry.getValue().save(instructor);
-
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
 		} finally {
@@ -59,7 +64,7 @@ public class RunAppOneToOneUniDirection {
 		Map<Instructor, InstructorDetail> map = new HashMap<Instructor, InstructorDetail>();
 
 		try {
-			int instructorIf = 30;
+			int instructorIf = 9;
 			entry.getValue().beginTransaction();
 			Instructor instructor = entry.getValue().get(Instructor.class, instructorIf);
 			if (instructor != null) {
@@ -97,7 +102,7 @@ public class RunAppOneToOneUniDirection {
 		Map.Entry<SessionFactory, Session> entry = getSession().entrySet().iterator().next();
 		try {
 			entry.getValue().beginTransaction();
-			int instructorDetailId = 7;
+			int instructorDetailId = 10;
 			Instructor instructor = entry.getValue().get(Instructor.class, instructorDetailId);
 			if (instructor != null) {
 				entry.getValue().delete(instructor);

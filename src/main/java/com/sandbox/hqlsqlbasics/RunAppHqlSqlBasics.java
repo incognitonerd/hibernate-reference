@@ -22,18 +22,14 @@ import com.sandbox.models.Student;
 import com.sandbox.utils.Constants;
 
 @SpringBootApplication
-@Component
 @ComponentScan(value = "com.sandbox")
 public class RunAppHqlSqlBasics {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RunAppHqlSqlBasics.class);
 
-	@Autowired
-	private static Environment env;
-
 	public static void main(String[] args) {
-		checkDBConnection();
+		//checkDBConnection();
 		// saveStudentDemo();
-		// getStudentDemo();
+		 getStudentDemo();
 		// updateStudentDemo();
 		// deleteStudentDemo();
 	}

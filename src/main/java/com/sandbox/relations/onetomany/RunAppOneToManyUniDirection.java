@@ -45,7 +45,7 @@ public class RunAppOneToManyUniDirection {
 			}
 		}
 		//deleteReview();
-		deleteCourse();
+		//deleteCourse();
 	}
 
 	public static void saveCourseAndReviews() {
@@ -54,7 +54,6 @@ public class RunAppOneToManyUniDirection {
 			Instructor instructor = new Instructor("headace", "toothace", "back pain@stomachace");
 			InstructorDetail instructorDetail = new InstructorDetail("tylenol", "goody");
 			instructor.setInstructorDetail(instructorDetail);
-
 
 			//Instructor instructor2 = entry.getValue().get(Instructor.class, 11);
 			Course c = new Course("lamp");
